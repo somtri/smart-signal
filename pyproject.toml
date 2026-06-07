@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "smartsignal"
+version = "0.1.0"
+description = "Leakage-aware stock direction forecasting with technical and sentiment features."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "SmartSignal Contributors" }]
+dependencies = [
+    "joblib>=1.4",
+    "numpy>=1.26",
+    "pandas>=2.2",
+    "scikit-learn>=1.5",
+    "yfinance>=0.2.54",
+]
+
+[project.optional-dependencies]
+app = [
+    "plotly>=5.24",
+    "streamlit>=1.40",
+]
+dev = [
+    "pytest>=8.3",
+    "ruff>=0.8",
+]
+
+[project.scripts]
+smartsignal = "smartsignal.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
